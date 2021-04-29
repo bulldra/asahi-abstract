@@ -1,0 +1,11 @@
+version: '2'
+services:
+  asahi-abstract:
+    build: .
+    container_name: 'asahi-abstract'
+    tty: true
+    volumes:
+      - './src:/data/src'
+      - './work:/data/work'
+      - './secrets:/data/secrets'
+    working_dir: '/data/work'
