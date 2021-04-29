@@ -1,23 +1,24 @@
-import sys
+#!/usr/bin/env python3
+
+__author__ = "bulldra"
+__version__ = "0.1.0"
+__license__ = "MIT"
+
 import os
+import argparse
 import json
 import requests
 import settings
 
-def main():
-    text = open(build_input_text_path(), 'r', encoding='UTF-8').read()
+def main(args):
+    path = args.arg1
+    if os.path.isfile(path) != True:
+        raise ValueError('処理対象ファイルの指定が誤っています')
+
+    text = open(path, 'r', encoding='UTF-8').read()
     r = get_abstract_text(text)
     for x in r:
         print(x)
-
-def build_input_text_path():
-    args = sys.argv
-    if len(args) != 2:
-        raise ValueError('処理対象ファイルがコマンド引数に指定されていません')
-    path = args[1]
-    if os.path.isfile(path) != True:
-        raise ValueError('処理対象ファイルの指定が誤っています')
-    return path
 
 def get_abstract_text(text):
     headers = {
@@ -37,4 +38,8 @@ def get_abstract_text(text):
     return r.json()['result']
 
 if(__name__ == '__main__'):
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('arg1', help='処理対象ファイル名')
+    parser.add_argument("--version", action="version", version="%(prog)s (version {version})".format(version=__version__))
+    args = parser.parse_args()
+    main(args)
