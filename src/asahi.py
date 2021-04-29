@@ -23,16 +23,16 @@ def get_abstract_text(text):
     headers = {
         'accept': 'application/json',
         'Content-Type': 'application/json',
-        'x-api-key': settings.asahi_abstract['token']
+        'x-api-key': settings.asahi_abstract_token
     }
 
     payload = json.dumps({
         'text': text,
-        'rate': str(settings.asahi_abstract['rate']),
-        'auto_paragraph': str(settings.asahi_abstract['auto_paragraph']).lower()
+        'rate': settings.asahi_abstract_rate,
+        'auto_paragraph': settings.asahi_abstract_auto_paragraph
     }).encode('utf-8')
 
-    r = requests.post(settings.asahi_abstract['url'], headers=headers, data=payload)
+    r = requests.post(settings.asahi_abstract_url, headers=headers, data=payload)
     r.raise_for_status()
     return r.json()['result']
 
