@@ -11,12 +11,12 @@ text = open(text_file, 'r', encoding='UTF-8').read()
 
 headers = {
     'accept': 'application/json',
-    'Content-Type': 'application/json',   
+    'Content-Type': 'application/json',
     'x-api-key': settings.asahi_abstract['token']
 }
 
 payload = json.dumps({
-    'text': text, 
+    'text': text,
     'rate': str(settings.asahi_abstract['rate']),
     'auto_paragraph': str(settings.asahi_abstract['auto_paragraph']).lower()
 }).encode('utf-8')
