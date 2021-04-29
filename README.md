@@ -11,6 +11,12 @@ https://cl.asahi.com/api_data/longsum.html
 # docker-compose build
 ```
 
+以下のディレクトリがDocker上にマウントされる
+
+* src -> /data/src
+* secrets ->  /data/secrets
+* work -> /data/work
+
 secrets/asahi_abstract.json に設定ファイルを作成
 
 ```json
@@ -21,6 +27,9 @@ secrets/asahi_abstract.json に設定ファイルを作成
     "auto_paragraph": false
 }
 ```
+
+work/ 配下に処理対象ファイルを配置
+
 
 ## 実行方法
 
