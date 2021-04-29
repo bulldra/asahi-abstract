@@ -17,7 +17,8 @@ https://cl.asahi.com/api_data/longsum.html
 * secrets ->  /data/secrets
 * work -> /data/work
 
-secrets/asahi_abstract.json に設定ファイルを作成
+secrets/asahi_abstract.json に設定ファイルを作成  
+トークンは https://cl.asahi.com/api_data/longsum.html で各自発行してください
 
 ```json
 {
